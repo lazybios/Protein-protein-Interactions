@@ -8,11 +8,9 @@ if __name__  == "__main__":
     conn = sqlite3.connect('ppi.db')
     nodes,links= [],[]
 
-#sql = "select * from ppi where source='Cs4g18200.1'" 
-    sql = "select * from ppi where source='orange1.1t00463.3'" 
+    sql = "select * from ppi where source='Cs8g05790.2'" 
     cursor = conn.execute(sql)
-#    nodes.append({"name":'Cs4g18200.1',"center":'y'})
-    nodes.append({"name":'orange1.1t00463.3',"center":'y'})
+    nodes.append({"name":'Cs8g05790.2',"center":'y'})
     for row in cursor:
         node_tmp = {}
         link_tmp = {}
@@ -25,7 +23,6 @@ if __name__  == "__main__":
         link_tmp['score2'] = row[4]
         links.append(link_tmp)
 
-    res_json = {"nodes":nodes,"links":links}
 #type通过跨表查询得到
     print nodes
     print links
