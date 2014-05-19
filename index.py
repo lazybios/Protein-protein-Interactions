@@ -30,13 +30,13 @@ class IndexHandler(tornado.web.RequestHandler):
         self.write("Gosh darnit,usre! You caused a %d error." % status_code)
 
 class GenerateJsonHandler(tornado.web.RequestHandler):
-    def post(self):    
+    def get(self):    
         nodes,links = [],[]
         protein = self.get_argument('protein',None)        
         if not protein:
             self.write('Sorry,the argument is null!!!')
             return 
-        nodes.append({"name":'Cs8g05790.2',"center":'y'})
+        nodes.append({"name":protein,"center":'y'})
         sql = "select * from ppi where source='"+protein+"'"       
         rows = _execute(sql)
         if not rows:
@@ -74,4 +74,3 @@ if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
-
