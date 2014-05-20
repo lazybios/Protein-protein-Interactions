@@ -27,6 +27,7 @@
 		<script src="{{ static_url('js/jquery.min.js') }}"></script>		
 		<script src="{{ static_url('js/jquery-ui.min.js') }}" type="text/javascript"></script>
 		<link rel="stylesheet" href="{{ static_url('css/jquery-ui.css') }}" type="text/css" media="screen">
+		<link rel="stylesheet" href="{{ static_url('css/style.css') }}" type="text/css" media="screen">
 		<meta charset="utf-8"></meta>
 		<script src="{{ static_url('js/d3.js') }}" charset="utf-8"></script>		
 		<script type="text/javascript" charset="utf-8">			
@@ -56,10 +57,14 @@
 			<div id="search_bar">
 				<form method="post" action="/json">
 					<p>KeyWords</p>
-					<input type="text" name="protein" id="protein" value="Cs9g02490.1">
+					<input type="text" name="protein" id="protein" value="orange1.1t04741.1">
 					<input type="submit" id ="submit" value="Submit"/>
 				</form>
 			</div>
+		</div>
+		<div id="tooltip" class="hidden">
+			<p><strong>Important Label Heading</strong></p>
+			<p><span id="value">100</span></p>
 		</div>
 	</body>
 </html>
