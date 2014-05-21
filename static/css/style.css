@@ -1,5 +1,6 @@
 body, .stage {
   	background: #042029; 
+  	text-align: center;
 }
 
 #tooltip {
@@ -26,3 +27,19 @@ body, .stage {
 	line-height: 20px;
 }
 
+#search_bar{
+	float: left;
+	color:red;
+	width: 250px;
+	height: 300px;
+	margin-top: 100px;
+	background-color: yellow;				
+}			
+.node {
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+.link {
+	stroke: #999;
+	stroke-opacity: .6;
+}

@@ -34,7 +34,11 @@ var palette = {
 function mapNodes(nodes){
   nodesMap = d3.map()       
   nodes.forEach(function(n){
-    nodesMap.set(n.name,n)
+    if (nodesMap.has(n.name)){      
+    }
+    else{      
+      nodesMap.set(n.name,n)
+    }
   });
     return nodesMap;
 } 
@@ -44,15 +48,19 @@ var scale_x = d3.scale.linear().domain([0,w]).range([0,300]);
 var scale_y = d3.scale.linear().domain([0,h]).range([h,0]);
 
 
-function render(ppi_json){
+function render(ppi_json){  
 
-              nodesMap = mapNodes(ppi_json.nodes);              
+              nodesMap = mapNodes(ppi_json.nodes);         
               ppi_json.links.forEach(function(l){
                   l.source = nodesMap.get(l.source)
                   l.target = nodesMap.get(l.target)    
               });
 
-              var nodes = ppi_json.nodes;
+              var temp_node = ppi_json.nodes[0].name
+              var nodes = ppi_json.nodes.filter(function(n){  
+                   return temp_node != n.name || n.center == 'y';
+              });              
+                                          
               var links = ppi_json.links;
 
 
@@ -70,17 +78,21 @@ function render(ppi_json){
                   .friction(0.95)
                   .linkDistance(50)
                   .linkStrength(1)
-                  .size([w-50, h-50]);
-
-              console.log(121)
-              console.log(nodes.length)
-
+                  .size([w-50, h-50]);                  
+/*
                var link = vis.selectAll(".link")
                         .data(links)
                         .enter().append("line")
                         .attr("class", "link")
                         .attr("stroke", "#CCC")
-                        .attr("fill", "none");
+                        .attr("fill", "none");*/
+
+               var link = vis.selectAll(".link")
+                        .data(links)
+                        .enter().append("path")
+                        .attr("class", "link")
+                        .attr("stroke", "#CCC")
+                        .attr("fill", "none");                        
                               
                var node = vis.selectAll("circle.node")
                     .data(nodes)
@@ -106,14 +118,12 @@ function render(ppi_json){
                         .attr("font-size","1.5em")
                         .attr("x", 15 )
                         .attr("y", 5 )
-
-                        console.log(d3.event.pageY,d3.event.pageX)
+                        
                         //show the detail info about the this protein
                         d3.select("#tooltip")
                           .style("left",(d3.event.pageX + 5) + "px")
                           .style("top",(d3.event.pageY + 5) + "px")                         
-                          .select("#value").text(d.name);
-                        console.log(12122)
+                          .select("#value").text(d.name);                        
                         d3.select("#tooltip").classed("hidden", false);
                       } else {
                         //CIRCLE
@@ -154,6 +164,7 @@ function render(ppi_json){
                        
                     })                                    
                     .on('dblclick',function(d,i){
+                        d3.select("#tooltip").classed("hidden", true);
                         console.log('dbclick')
                         protein = d.name;
                         var ajaxsrc='json?'+'protein='+protein;
@@ -163,8 +174,7 @@ function render(ppi_json){
                           .on("beforesend", function(request) { request.withCredentials = true; })
                           .get(function(error,json){                            
                             $('#submit').attr('disabled', false);
-                            ppi_json = json;                            
-                            console.log(ppi_json)                              
+                            ppi_json = json;
                             render(ppi_json);             
                           });                         
                     })                    
@@ -196,20 +206,74 @@ function render(ppi_json){
 
 
 
-              force.on("tick", function(e) {
+/*              force.on("tick", function(e) {
                 node.attr("transform", function(d, i) {     
                       if (d.center == 'y'){
                           return "translate(" + d.x + "," + d.y + ")"; 
                       } 
-                      return "translate(" + d.x + "," + d.y + ")"; 
-                     /* return "translate(" + scale_x(d.x) + "," + scale_y(d.y) + ")"; */
+                      return "translate(" + d.x + "," + d.y + ")";                      
                   });
 
                   link.attr("x1", function(d)  { return d.source.x; })
                      .attr("y1", function(d)   { return d.source.y; })
                      .attr("x2", function(d)   { return d.target.x; })
                      .attr("y2", function(d)   { return d.target.y; })
+                  });*/
+
+               force.on("tick", function(e) {
+                  node.attr("transform", function(d, i) {     
+                      if (d.center == 'y'){
+                          return "translate(" + d.x + "," + d.y + ")"; 
+                      } 
+                      return "translate(" + d.x + "," + d.y + ")";                      
                   });
+
+/*                  link.attr("x1", function(d)  { return d.source.x; })
+                     .attr("y1", function(d)   { return d.source.y; })
+                     .attr("x2", function(d)   { return d.target.x; })
+                     .attr("y2", function(d)   { return d.target.y; })
+*/
+                  link.attr("d", function(d) {
+                        var x1 = d.source.x,
+                            y1 = d.source.y,
+                            x2 = d.target.x,
+                            y2 = d.target.y,
+                            dx = x2 - x1,
+                            dy = y2 - y1,
+                            dr = Math.sqrt(dx * dx + dy * dy),
+
+                            // Defaults for normal edge.
+                            drx = dr,
+                            dry = dr,
+                            xRotation = 0, // degrees
+                            largeArc = 0, // 1 or 0
+                            sweep = 1; // 1 or 0
+
+                            // Self edge.
+                            if ( x1 === x2 && y1 === y2 ) {
+                              // Fiddle with this angle to get loop oriented.
+                              xRotation = -45;
+
+                              // Needs to be 1.
+                              largeArc = 1;
+
+                              // Change sweep to change orientation of loop. 
+                              //sweep = 0;
+
+                              // Make drx and dry different to get an ellipse
+                              // instead of a circle.
+                              drx = 30;
+                              dry = 20;
+                              
+                              // For whatever reason the arc collapses to a point if the beginning
+                              // and ending points of the arc are the same, so kludge it.
+                              x2 = x2 + 1;
+                              y2 = y2 + 1;
+                            } 
+
+                       return "M" + x1 + "," + y1 + "A" + drx + "," + dry + " " + xRotation + "," + largeArc + "," + sweep + " " + x2 + "," + y2;
+                      });
+                 });
 
               force.start();
 }

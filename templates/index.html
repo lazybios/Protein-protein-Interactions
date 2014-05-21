@@ -1,27 +1,5 @@
 <html>
-	<head>
-		<style>
-			body, .stage {
-				background: #042029;
-				text-align: center;
-			}
-			#search_bar{
-				float: left;
-				color:red;
-				width: 250px;
-				height: 300px;
-				margin-top: 100px;
-				background-color: yellow;				
-			}			
-			.node {
-			  stroke: #fff;
-			  stroke-width: 1.5px;
-			}
-			.link {
-			  stroke: #999;
-			  stroke-opacity: .6;
-			}
-		</style>
+	<head>		
 		<title>Protein-protein interactions Visualable Project</title>
 		<link rel="icon" href="{{ static_url('img/favicon.ico') }}" type="image/x-icon">
 		<script src="{{ static_url('js/jquery.min.js') }}"></script>		
@@ -33,8 +11,7 @@
 		<script type="text/javascript" charset="utf-8">			
 			$("#search_bar").draggable();
 			var protein = '';				
-  			$(document).ready(function(){
-				
+  			$(document).ready(function(){				
 				$("#submit").click(function(){	
 					$('.stage').remove();
 					$('#submit').attr('disabled', true);
@@ -44,7 +21,8 @@
 						.on("beforesend", function(request) { request.withCredentials = true; })
 						.get(function(error,json){
 							$('#submit').attr('disabled', false);
-							ppi_json = json;				        							
+							ppi_json = json;
+							//console.log(ppi_json)
 							render(ppi_json);							
 						});
 				});								
@@ -57,7 +35,7 @@
 			<div id="search_bar">
 				<form method="post" action="/json">
 					<p>KeyWords</p>
-					<input type="text" name="protein" id="protein" value="orange1.1t04741.1">
+					<input type="text" name="protein" id="protein" value="Cs3g26260.1">
 					<input type="submit" id ="submit" value="Submit"/>
 				</form>
 			</div>
