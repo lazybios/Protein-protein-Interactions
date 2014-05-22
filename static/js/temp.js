@@ -74,7 +74,7 @@ function render(ppi_json){
                   .nodes(nodes)
                   .links([])
                   .gravity(0.1)
-                  .charge(-200)
+                  .charge(-150)
                   .friction(0.95)
                   .linkDistance(50)
                   .linkStrength(1)
