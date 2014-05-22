@@ -48,3 +48,7 @@ UPDATE summ SET colorpro = '13307145776 ' WHERE gene = 'Cs4g01010.1';
 ##########################
 #ERROR COMMAND ESCAPE PROBLEM
 INSERT INTO summ VALUES ("Cs1g17740.1","11.8.10","lipid metabolism.'exotics' (steroids, squalene etc).phosphatidylcholinesterol O-acyltransferase","");
+
+
+##########################
+select * from exp where gene = 'Cs8g06060';

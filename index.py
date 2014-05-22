@@ -33,21 +33,73 @@ class GenerateJsonHandler(tornado.web.RequestHandler):
     def get(self):    
         nodes,links = [],[]
         protein = self.get_argument('protein',None)        
+        name = protein
+        name = name[::-1][name[::-1].index('.')+1:][::-1]
         if not protein:
             self.write('Sorry,the argument is null!!!')
-            return 
-        nodes.append({"name":protein,"center":'y'})
-        sql = "select * from ppi where source='"+protein+"'"       
+            return         
+        sql = "select * from exp where gene = '"+ name +"'" 
+        print sql
+        rows = _execute(sql)
+        exp =  {
+            "calus":rows[0][1],
+            "flower":rows[0][2],
+            "leaf":rows[0][3],
+            "fruit":rows[0][4],
+            "mixture1":rows[0][5],
+            "mixture2":rows[0][6],
+            "mixture3":rows[0][7]
+        }
+        sql = "select * from summ where gene = '"+ protein +"'"
+        rows = _execute(sql)
+        summ = {
+            "bin":rows[0][1],
+            "mapman":rows[0][2],
+            "annotation":rows[0][3],
+            "protype":rows[0][4]
+        }  
+        nodes.append({"name":protein,"center":"y","exp":exp,"summ":summ})
+        sql = "select * from ppi where source='"+protein+"'"      
+        print sql
         rows = _execute(sql)
         if not rows:
-            #404Page the json is null and process logcal in the pagg
+            #404Page the json is null and process logcal in the page
             self.write('Sorry,the protein is not here!!!')
             return 
         for row in rows:
             node_tmp = {}
             link_tmp = {}
-            node_tmp['name'] = row[2] 
+            summ_tmp = {}
+            exp_tmp = {}
+            node_tmp['name'],name = row[2],row[2]
             node_tmp['center'] = 'n'        
+            name = name[::-1][name[::-1].index('.')+1:][::-1]
+            sql = "select * from exp where gene = '"+ name +"'"            
+            rows = _execute(sql)
+            if not rows:
+                #TODO fix it 
+                self.write('Sorry,the protein exp is not here!!!')
+                return 
+            exp_tmp =  {
+                "calus":rows[0][1],
+                "flower":rows[0][2],
+                "leaf":rows[0][3],
+                "fruit":rows[0][4],
+                "mixture1":rows[0][5],
+                "mixture2":rows[0][6],
+                "mixture3":rows[0][7]
+            }
+            node_tmp['exp'] = exp_tmp
+            sql = "select * from summ where gene = '"+ node_tmp['name']  +"'"
+            rows = _execute(sql)
+            summ_tmp = {
+                "bin":rows[0][1],
+                "mapman":rows[0][2],
+                "annotation":rows[0][3],
+                "protype":rows[0][4]
+            }  
+            node_tmp['summ'] = summ_tmp
+            
             nodes.append(node_tmp)
             link_tmp['source'] = row[1]
             link_tmp['target'] = row[2]
