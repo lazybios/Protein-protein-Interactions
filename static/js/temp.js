@@ -31,6 +31,22 @@ var palette = {
       "yellowgreen": "#738A05"
   };
 
+var colorful = {
+    "DNA":"#FF4500",
+    "protein":"#00BFFF",
+    "RNA":"#006400",
+    "cell":"#D2691E",
+    "development":"#00FF00",
+    "hormone":"#8A2BE2",
+    "meta":"#FFFF00",
+    "misc":"#3CB371",
+    "redox":"#FF1493",
+    "signalling":"#8B0000",
+    "stress":"#808000",
+    "transport":"#008000",
+    "other":"#FF6666"
+}
+
 function mapNodes(nodes){
   nodesMap = d3.map()       
   nodes.forEach(function(n){
@@ -91,7 +107,28 @@ function render(ppi_json){
                         .data(links)
                         .enter().append("path")
                         .attr("class", "link")
-                        .attr("stroke", "#CCC")
+                        .attr("stroke", function(l,i){
+                            if (l.score1 == 0 && l.score2 !=0){
+                                 d3.select(this).attr("stroke-dasharray","5,5")
+                                    .attr("stroke-width","4");                                
+                                return "red"                                
+                            }else{
+                               if (l.score1>0.15&& l.score1 <= 0.2){
+                                  d3.select(this).attr("stroke-width","2");
+                                  return "yellow";
+                               }else if (l.score1>0.2 && l.score1<=0.5) {
+                                  d3.select(this).attr("stroke-width","3");
+                                  return "blue";
+                               }else if (l.score1 >0.5 && l.score1 <= 0.8) {
+                                  d3.select(this).attr("stroke-width","4");
+                                  return "gray";
+                               }else if (l.score1 > 0.8) {
+                                  d3.select(this).attr("stroke-width","4");
+                                  return "green";
+                               }
+                            }
+                            
+                        })
                         .attr("fill", "none");                        
                               
                var node = vis.selectAll("circle.node")
@@ -119,11 +156,27 @@ function render(ppi_json){
                         .attr("x", 15 )
                         .attr("y", 5 )
                         
-                        //show the detail info about the this protein
+                        //show the detail info about the this protein                        
                         d3.select("#tooltip")
                           .style("left",(d3.event.pageX + 5) + "px")
                           .style("top",(d3.event.pageY + 5) + "px")                         
-                          .select("#value").text(d.name);                        
+                          .select("#value").text(d.name);
+
+                        d3.select("#tooltip")
+                          .select("#callus").text(d.exp.callus);
+                        d3.select("#tooltip")
+                          .select("#flower").text(d.exp.flower);
+                        d3.select("#tooltip")                          
+                          .select("#leaf").text(d.exp.leaf);
+                        d3.select("#tooltip")                          
+                          .select("#fruit").text(d.exp.fruit);
+                        d3.select("#tooltip")
+                          .select("#mixture1").text(d.exp.mixture1);
+                        d3.select("#tooltip")                          
+                          .select("#mixture2").text(d.exp.mixture2);
+                        d3.select("#tooltip")
+                          .select("#mixture3").text(d.exp.mixture3);
+
                         d3.select("#tooltip").classed("hidden", false);
                       } else {
                         //CIRCLE
@@ -185,7 +238,49 @@ function render(ppi_json){
                     .attr("cx", function(d) { return d.x; })
                     .attr("cy", function(d) { return d.y; })
                     .attr("r", circleWidth)
-                    .attr("fill", function(d, i) { if (i>0) { return  palette.pink; } else { return palette.paleryellow } } )
+                    .attr("fill", function(d, i) { 
+                      switch(d.summ.protype){
+                        case 'RNA':
+                            return colorful.RNA
+                            break;
+                        case "DNA":
+                            return colorful.DNA;
+                            break;
+                        case "protein":
+                            return colorful.protein;
+                            break;
+                        case "cell":
+                            return colorful.cell;
+                            break;
+                        case "development":
+                            return colorful.development;
+                            break;
+                        case "misc":
+                            return colorful.misc;
+                            break;
+                        case "hormone":
+                            return colorful.hormone;
+                            break;
+                        case "meta":
+                            return colorful.meta;
+                            break;
+                        case "redox":
+                            return colorful.redox;
+                            break;
+                        case "signalling":
+                            return colorful.signalling;
+                            break;
+                        case "stress":
+                            return colorful.stress;
+                            break;
+                        case "transport":
+                            return colorful.transport;
+                            break;
+                        case "other":
+                            return colorful.other;
+                            break;
+                       }
+                      })
 
                   //TEXT
                   node.append("text")
@@ -200,7 +295,7 @@ function render(ppi_json){
                     .attr("x",            function(d, i) { if (i>0) { return circleWidth + 5; }   else { return -10 } })
                     .attr("y",            function(d, i) { if (i>0) { return circleWidth + 0 }    else { return 8 } })
                     .attr("font-family",  "Bree Serif")
-                    .attr("fill",         function(d, i) { if (i>0) { return  palette.paleryellow; }        else { return palette.yellowgreen } })
+                    .attr("fill",         function(d, i) { if (i>0) { return  palette.paleryellow; }   else { return palette.yellowgreen } })
                     .attr("font-size",    function(d, i) { if (i>0) { return  "1em"; }            else { return "1.8em" } })
                     .attr("text-anchor",  function(d, i) { if (i>0) { return  "beginning"; }      else { return "end" } })
 

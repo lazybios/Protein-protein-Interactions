@@ -70,6 +70,4 @@ if __name__ == "__main__":
 #        print "csi_mapman.csv and csi_mapman.csv Insert data complete :) !!!"
 #    else:
 #        conn.close()
-#        print "csi_mapman.csv Insert data error :( !!!"
-    
-    
+#        print "csi_mapman.csv Insert data error :( !!!"    

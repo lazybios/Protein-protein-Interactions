@@ -52,3 +52,4 @@ INSERT INTO summ VALUES ("Cs1g17740.1","11.8.10","lipid metabolism.'exotics' (st
 
 ##########################
 select * from exp where gene = 'Cs8g06060';
+select * from summ where gene = 'Cs1g17740.1'

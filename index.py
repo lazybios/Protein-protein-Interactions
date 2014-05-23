@@ -42,7 +42,7 @@ class GenerateJsonHandler(tornado.web.RequestHandler):
         print sql
         rows = _execute(sql)
         exp =  {
-            "calus":rows[0][1],
+            "callus":rows[0][1],
             "flower":rows[0][2],
             "leaf":rows[0][3],
             "fruit":rows[0][4],
@@ -81,7 +81,7 @@ class GenerateJsonHandler(tornado.web.RequestHandler):
                 self.write('Sorry,the protein exp is not here!!!')
                 return 
             exp_tmp =  {
-                "calus":rows[0][1],
+                "callus":rows[0][1],
                 "flower":rows[0][2],
                 "leaf":rows[0][3],
                 "fruit":rows[0][4],

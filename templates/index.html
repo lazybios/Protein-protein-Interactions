@@ -21,8 +21,7 @@
 						.on("beforesend", function(request) { request.withCredentials = true; })
 						.get(function(error,json){
 							$('#submit').attr('disabled', false);
-							ppi_json = json;
-							//console.log(ppi_json)
+							ppi_json = json;							
 							render(ppi_json);							
 						});
 				});								
@@ -35,14 +34,24 @@
 			<div id="search_bar">
 				<form method="post" action="/json">
 					<p>KeyWords</p>
-					<input type="text" name="protein" id="protein" value="Cs3g26260.1">
+					<input type="text" name="protein" id="protein" value="Cs6g02840.1">
 					<input type="submit" id ="submit" value="Submit"/>
 				</form>
 			</div>
 		</div>
 		<div id="tooltip" class="hidden">
-			<p><strong>Important Label Heading</strong></p>
-			<p><span id="value">100</span></p>
+			<!-- take table css  -->
+			<p><strong>Protein Info</strong></p>
+			<div id="exp_info">
+				<p>Name: <span id="value"></span></p>
+				<p>Callus: <span id="callus"></span></p>
+				<p>Flower: <span id="flower"></span></p>
+				<p>Leaf: <span id="leaf"></span></p>
+				<p>Fruit: <span id="fruit"></span></p>
+				<p>Mixture1: <span id="mixture1"></span></p>
+				<p>Mixture2: <span id="mixture2"></span></p>
+				<p>Mixture3: <span id="mixture3"></span></p>
+			</div>
 		</div>
 	</body>
 </html>
