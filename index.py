@@ -109,7 +109,7 @@ class GenerateJsonHandler(tornado.web.RequestHandler):
                   
         res_json = {"nodes":nodes,"links":links}
         res_json = json.JSONEncoder().encode(res_json)  
-        
+        self.set_header("Content-Type", 'application/json; charset="utf-8"') 
         self.write(res_json)
 
 if __name__ == "__main__":

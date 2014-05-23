@@ -10,18 +10,24 @@
 		<script src="{{ static_url('js/d3.js') }}" charset="utf-8"></script>		
 		<script type="text/javascript" charset="utf-8">			
 			$("#search_bar").draggable();
-			var protein = '';				
-  			$(document).ready(function(){				
+			var protein = '';			
+
+  			$(document).ready(function(){  					  							
 				$("#submit").click(function(){	
-					$('.stage').remove();
+					$('.stage').remove();					
 					$('#submit').attr('disabled', true);
+					
 					protein =$("#protein").val();					
-					var ajaxsrc='json?'+'protein='+protein;					
+					var ajaxsrc='json?'+'protein='+protein;									
+					console.log(ajaxsrc);
 					d3.json(ajaxsrc)
 						.on("beforesend", function(request) { request.withCredentials = true; })
 						.get(function(error,json){
-							$('#submit').attr('disabled', false);
-							ppi_json = json;							
+							$.getJSON(ajaxsrc,function(json){console.log('1223')})
+							if (error) return console.warn(error);
+							$('#submit').attr('disabled', false);							
+							ppi_json = json;
+							console.log(json)							
 							render(ppi_json);							
 						});
 				});								
@@ -31,12 +37,10 @@
 	</head>
 	<body>
 		<div class="container">
-			<div id="search_bar">
-				<form method="post" action="/json">
+			<div id="search_bar">				
 					<p>KeyWords</p>
 					<input type="text" name="protein" id="protein" value="Cs6g02840.1">
-					<input type="submit" id ="submit" value="Submit"/>
-				</form>
+					<input type="submit" id ="submit" value="Submit"/>				
 			</div>
 		</div>
 		<div id="tooltip" class="hidden">

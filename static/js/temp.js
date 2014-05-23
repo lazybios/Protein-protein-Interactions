@@ -95,14 +95,7 @@ function render(ppi_json){
                   .linkDistance(50)
                   .linkStrength(1)
                   .size([w-50, h-50]);                  
-/*
-               var link = vis.selectAll(".link")
-                        .data(links)
-                        .enter().append("line")
-                        .attr("class", "link")
-                        .attr("stroke", "#CCC")
-                        .attr("fill", "none");*/
-
+                  
                var link = vis.selectAll(".link")
                         .data(links)
                         .enter().append("path")
