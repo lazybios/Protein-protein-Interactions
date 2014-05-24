@@ -46,3 +46,7 @@ body, .stage {
 .link {	
 	stroke-opacity: .6;
 }
+.overlay{
+	fill:none;
+	pointer-event:all;
+}
