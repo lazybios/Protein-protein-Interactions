@@ -1,62 +1,139 @@
-<html>
-	<head>		
-		<title>Protein-protein interactions Visualable Project</title>
-		<link rel="icon" href="{{ static_url('img/favicon.ico') }}" type="image/x-icon">
-		<script src="{{ static_url('js/jquery.min.js') }}"></script>		
-		<script src="{{ static_url('js/jquery-ui.min.js') }}" type="text/javascript"></script>
-		<link rel="stylesheet" href="{{ static_url('css/jquery-ui.css') }}" type="text/css" media="screen">
-		<link rel="stylesheet" href="{{ static_url('css/style.css') }}" type="text/css" media="screen">
-		<meta charset="utf-8"></meta>
-		<script src="{{ static_url('js/d3.js') }}" charset="utf-8"></script>		
-		<script type="text/javascript" charset="utf-8">			
-			$("#search_bar").draggable();
-			var protein = '';			
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>PPI-Home</title>
+        <meta charset ="utf-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="{{ static_url('js/jquery.min.js') }}"></script>
+        <script src="{{ static_url('js/jquery-ui.min.js') }}" type="text/javascript"></script>
+        <link rel="icon" href="{{ static_url('img/favicon.ico') }}" type="image/x-icon">       
+        <link rel="stylesheet" href="{{ static_url('css/jquery-ui.css') }}" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{ static_url('css/bootstrap.min.css') }}" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{ static_url('css/jumbotron-narrow.css') }}" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{ static_url('css/style.css') }}" type="text/css" media="screen">
+        <script src="{{ static_url('js/d3.js') }}" charset="utf-8"></script>
+        <script src="{{ static_url('js/temp.js') }}" charset="utf-8"></script>
+        <style type="text/css">
+            .svg_container{
+                background: #042029;
+            }
+        </style>
+        <script type="text/javascript" charset="utf-8">                     
+            var protein = '';           
+            submit_post = function(){                    
+                    $('.stage').remove();
+                    $('#submit').attr('disabled', true);
+                    if ($("#protein_2").val()){
+                        protein =$("#protein_2").val();
+                    }else{
+                        protein =$("#protein").val();    
+                    }
+                    
+                    var ajaxsrc='json?'+'protein='+protein;
+                    $('.jumbotron').remove();
+                    $('.marketing').removeAttr('style');                    
+                    $('.lc_breadcrumb').removeAttr('style');
+                    $('.navbar-form').removeAttr('style');
+                    console.log(ajaxsrc);
+                    d3.json(ajaxsrc)
+                        .on("beforesend", function(request) { request.withCredentials = true; })
+                        .get(function(error,json){                            
+                            if (error) return console.warn(error);
+                            $('#submit').attr('disabled', false);                           
+                            ppi_json = json;
+                            if (ppi_json){
+                                console.log(ppi_json.nodes[0])
+                                c_node = ppi_json.nodes[0]
+                                updateProteinInfo(c_node)
+                            }
+                            render(ppi_json);                           
+                        });
+                }
+            $(document).ready(function(){
+                $("#submit").click(submit_post); 
+                $("#submit_2").click(submit_post);
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="navbar-form navbar-right" style="display:none">
+                <input type="text" name="protein" id="protein_2" class="form-control" placeholder="Cs6g02840.1"/>
+                    <input class="btn btn-default" type="submit" id ="submit_2" value="Search"/>
+                </div>                
+                <ul class="nav nav-pills pull-right">
+                   <li class="active"><a href="#">Home</a></li>                    
+                   <li><a href="#">Gene</a></li>
+                   <li><a href="#">About</a></li>
+                </ul>
+                <h3 class="text-muted">Citrus PPI</h3>
+            </div><!--header end-->
+            <div class="jumbotron">
+                <h1>Protein-protein Interactions</h1>                    
+                <p>
+                The PPI network, CitrusNet, contains 8,195 proteins with 124,491 interactions (Chang et al., submitted). Users can Search a Protein they are interested in, and obtain its interacting proteins. 
+                </p>
+                <div>
+                      <div class="col-xs-10">
+                            <input type="text" name="protein" id="protein" class="form-control input-lg" placeholder="Cs6g02840.1" value="Cs6g02840.1" />                          
+                      </div>
+                      <button type="button" id ="submit" class="btn btn-primary btn-lg">Search</button>
+                </div>
+            </div><!--jumbotron end-->
+            <div class="svg_container">
 
-  			$(document).ready(function(){  					  							
-				$("#submit").click(function(){	
-					$('.stage').remove();					
-					$('#submit').attr('disabled', true);
-					
-					protein =$("#protein").val();					
-					var ajaxsrc='json?'+'protein='+protein;									
-					console.log(ajaxsrc);
-					d3.json(ajaxsrc)
-						.on("beforesend", function(request) { request.withCredentials = true; })
-						.get(function(error,json){
-							$.getJSON(ajaxsrc,function(json){console.log('1223')})
-							if (error) return console.warn(error);
-							$('#submit').attr('disabled', false);							
-							ppi_json = json;
-							console.log(json)							
-							render(ppi_json);							
-						});
-				});								
+            </div>
+        <div class="row marketing" style="display:none">
+               <div class="panel panel-default">
+                    <div class="panel-heading">Protein Info </div>            
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Protein</th>
+                            <th>Mapman[Bin]</th>
+                            <th>Expression</th>
+                            <th>Annotation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Cs2g14290.1</td>
+                            <td>
+                                lipid metabolism.''exotics'' (steroids, squalene etc).sphingolipids.serine C-palmitoyltransferase<br>[11.8.1.2]
+                            </td>
+                            <td>
+                                Callus: 4.12<br>Flower: 2.07<br>Leaf: 2.74<br>Fruit: 2.1<br>Mixture1: 2.23<br>Mixture2: 1.44<br>Mixture3: 4.68<br>
+                            </td>
+                            <td>
+                                Serine palmitoyltransferase 2; Putative 8-amino-7-oxononanoate synthase/2-amino-3-ketobutyrate coenzyme A ligase; Putative pyridoxal phosphate-dependent acyltransferase; 8-amino-7-oxononanoate synthase; Putative 8-amino-7-oxononanoate synthase; 8-amino-7-oxononanoate synthase/2-amino-3-ketobutyrate coenzyme A ligase;Chromosome 14 SCAF14590, whole genome shotgun sequence. (Fragment)
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+               </div> 
+            </div><!--marketing end-->
 
-			});
-		</script>
-	</head>
-	<body>
-		<div class="container">
-			<div id="search_bar">				
-					<p>KeyWords</p>
-					<input type="text" name="protein" id="protein" value="Cs6g02840.1">
-					<input type="submit" id ="submit" value="Submit"/>				
-			</div>
-		</div>
-		<div id="tooltip" class="hidden">
-			<!-- take table css  -->
-			<p><strong>Protein Info</strong></p>
-			<div id="exp_info">
-				<p>Name: <span id="value"></span></p>
-				<p>Callus: <span id="callus"></span></p>
-				<p>Flower: <span id="flower"></span></p>
-				<p>Leaf: <span id="leaf"></span></p>
-				<p>Fruit: <span id="fruit"></span></p>
-				<p>Mixture1: <span id="mixture1"></span></p>
-				<p>Mixture2: <span id="mixture2"></span></p>
-				<p>Mixture3: <span id="mixture3"></span></p>
-			</div>
-		</div>
-	</body>
+            <div id="tooltip" class="hidden">            
+            <p><strong>Protein Info</strong></p>
+            <div id="exp_info">
+                <p>Name: <span id="value"></span></p>
+                <p>Callus: <span id="callus"></span></p>
+                <p>Flower: <span id="flower"></span></p>
+                <p>Leaf: <span id="leaf"></span></p>
+                <p>Fruit: <span id="fruit"></span></p>
+                <p>Mixture1: <span id="mixture1"></span></p>
+                <p>Mixture2: <span id="mixture2"></span></p>
+                <p>Mixture3: <span id="mixture3"></span></p>
+            </div>
+        </div>
+            <div class="footer">
+                <p>&copy; Company 2014</p>
+            <div><!--footer end-->
+        </div> 
+        <!--<script src="../static/js/jquery.min.js"></script>-->        
+        <!--<script src="{{ static_url('js/bootstrap.min.js') }}"></script>-->
+    
+    </body>
 </html>
-<script src="{{ static_url('js/temp.js') }}" charset="utf-8"></script>		

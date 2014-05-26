@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset ="utf-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ static_url('img/favicon.ico') }}" type="image/x-icon">
+        <title>Protein-protein interactions Visualable Project</title>
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="navbar-form navbar-right">
+                    <input type="text" name="protein" id="protein" class="form-control" value="Cs6g02840.1"/>
+                    <input class="btn btn-default" type="submit" id ="submit" value="Search"/>
+                </div>
+                <ul class="nav nav-pills pull-right">
+                   <li class="active"><a href="#">Home</a></li> 
+                   <li><a href="#">About</a></li>
+                   <li><a href="#">Gene</a></li>
+                </ul>
+                <h3 class="text-muted">Citrus PPI</h3>
+            </div><!--header end-->
+            <div class="jumbotron">
+                <h1>Protein-protein Interactions</h1>                    
+                <p>
+                The PPI network, CitrusNet, contains 8,195 proteins with 124,491 interactions (Chang et al., submitted). Users can Search a Protein they are interested in, and obtain its interacting proteins. 
+                </p>
+                <div>
+                      <div class="col-xs-10">
+                          <input type="text" class="form-control input-lg" placeholder="Cs6g02840.1">
+                      </div>
+                      <button type="button" class="btn btn-primary btn-lg">Search</button>
+                </div>
+            </div><!--jumbotron end-->
+            <div class="row marketing">
+               <div class="panel panel-default">
+                    <div class="panel-heading">Protein Info </div>
+            
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Protein</th>
+                            <th>Mapman[Bin]</th>
+                            <th>Expression</th>
+                            <th>Annotation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Cs2g14290.1</td>
+                            <td>
+                                lipid metabolism.''exotics'' (steroids, squalene etc).sphingolipids.serine C-palmitoyltransferase<br>[11.8.1.2]
+                            </td>
+                            <td>
+                                Callus: 4.12<br>Flower: 2.07<br>Leaf: 2.74<br>Fruit: 2.1<br>Mixture1: 2.23<br>Mixture2: 1.44<br>Mixture3: 4.68<br>
+                            </td>
+                            <td>
+                                Serine palmitoyltransferase 2; Putative 8-amino-7-oxononanoate synthase/2-amino-3-ketobutyrate coenzyme A ligase; Putative pyridoxal phosphate-dependent acyltransferase; 8-amino-7-oxononanoate synthase; Putative 8-amino-7-oxononanoate synthase; 8-amino-7-oxononanoate synthase/2-amino-3-ketobutyrate coenzyme A ligase;Chromosome 14 SCAF14590, whole genome shotgun sequence. (Fragment)
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+               </div> 
+            </div><!--jumbotron end-->
+            <div class="footer">
+                <p>&copy; Company 2014</p>
+            <div><!--footer end-->
+        </div> 
+        <script src="../static/js/jquery.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+    </body>
+</html>

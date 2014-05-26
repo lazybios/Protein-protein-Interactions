@@ -2,7 +2,7 @@
 /*var ppi_json = {"nodes": [{"name": "orange1.1t04741.1", "center": "y"}, {"name": "Cs2g04850.2", "center": "n"}, {"name": "Cs9g02490.1", "center": "n"}, {"name": "Cs3g10670.2", "center": "n"}, {"name": "orange1.1t00168.1", "center": "n"}, {"name": "Cs6g16010.5", "center": "n"}, {"name": "Cs4g07670.1", "center": "n"}, {"name": "Cs9g03530.2", "center": "n"}, {"name": "Cs3g25060.2", "center": "n"}, {"name": "Cs2g09970.1", "center": "n"}, {"name": "Cs3g16020.8", "center": "n"}, {"name": "Cs1g21530.1", "center": "n"}, {"name": "Cs8g10160.2", "center": "n"}, {"name": "Cs9g05750.3", "center": "n"}, {"name": "orange1.1t02288.1", "center": "n"}, {"name": "Cs9g02490.2", "center": "n"}, {"name": "Cs5g23640.1", "center": "n"}, {"name": "Cs6g04450.1", "center": "n"}, {"name": "Cs4g12620.1", "center": "n"}, {"name": "Cs9g07870.2", "center": "n"}, {"name": "Cs3g12970.3", "center": "n"}, {"name": "Cs5g35310.1", "center": "n"}, {"name": "Cs4g02930.1", "center": "n"}, {"name": "Cs8g02310.1", "center": "n"}, {"name": "Cs1g24690.1", "center": "n"}, {"name": "Cs1g14390.3", "center": "n"}, {"name": "Cs3g16020.4", "center": "n"}, {"name": "Cs7g12530.1", "center": "n"}, {"name": "Cs1g21290.3", "center": "n"}, {"name": "Cs7g13950.2", "center": "n"}, {"name": "Cs1g09920.1", "center": "n"}, {"name": "Cs8g03680.2", "center": "n"}, {"name": "orange1.1t00459.3", "center": "n"}, {"name": "Cs7g06850.1", "center": "n"}, {"name": "Cs6g05770.1", "center": "n"}, {"name": "Cs1g17300.1", "center": "n"}, {"name": "Cs5g27040.1", "center": "n"}, {"name": "Cs3g11400.1", "center": "n"}, {"name": "Cs3g16020.1", "center": "n"}, {"name": "Cs2g28930.3", "center": "n"}, {"name": "orange1.1t00459.1", "center": "n"}, {"name": "Cs5g05650.1", "center": "n"}, {"name": "Cs7g08790.1", "center": "n"}, {"name": "Cs7g12520.1", "center": "n"}, {"name": "Cs7g17060.4", "center": "n"}, {"name": "Cs1g26080.1", "center": "n"}, {"name": "Cs3g02590.1", "center": "n"}, {"name": "Cs3g12970.2", "center": "n"}, {"name": "Cs5g26110.2", "center": "n"}, {"name": "Cs7g17060.2", "center": "n"}, {"name": "Cs4g12840.1", "center": "n"}, {"name": "Cs3g11680.6", "center": "n"}, {"name": "Cs1g14390.6", "center": "n"}, {"name": "Cs5g05650.3", "center": "n"}, {"name": "Cs5g27000.2", "center": "n"}, {"name": "Cs6g08840.2", "center": "n"}, {"name": "orange1.1t02345.2", "center": "n"}, {"name": "Cs8g19650.1", "center": "n"}, {"name": "Cs9g17360.1", "center": "n"}, {"name": "Cs3g11680.2", "center": "n"}, {"name": "Cs1g10270.1", "center": "n"}, {"name": "Cs6g19730.2", "center": "n"}, {"name": "Cs1g25690.1", "center": "n"}, {"name": "orange1.1t02721.2", "center": "n"}, {"name": "Cs6g21100.1", "center": "n"}, {"name": "Cs6g02840.2", "center": "n"}, {"name": "Cs9g03530.1", "center": "n"}, {"name": "Cs1g14390.8", "center": "n"}, {"name": "Cs4g03760.1", "center": "n"}, {"name": "Cs9g05750.1", "center": "n"}, {"name": "Cs5g05650.5", "center": "n"}, {"name": "Cs2g08430.1", "center": "n"}, {"name": "Cs6g02840.1", "center": "n"}, {"name": "Cs4g15310.1", "center": "n"}, {"name": "Cs9g15060.1", "center": "n"}, {"name": "Cs1g21050.1", "center": "n"}, {"name": "orange1.1t04186.1", "center": "n"}, {"name": "Cs3g16020.5", "center": "n"}, {"name": "Cs1g09920.3", "center": "n"}, {"name": "Cs7g19120.1", "center": "n"}, {"name": "Cs2g21530.2", "center": "n"}, {"name": "orange1.1t00051.1", "center": "n"}, {"name": "Cs9g01570.1", "center": "n"}, {"name": "Cs8g08200.2", "center": "n"}, {"name": "Cs5g20610.1", "center": "n"}, {"name": "Cs5g13100.1", "center": "n"}, {"name": "Cs9g03120.2", "center": "n"}, {"name": "Cs5g05650.7", "center": "n"}, {"name": "Cs2g27930.2", "center": "n"}, {"name": "Cs8g02310.3", "center": "n"}], "links": [{"source": "orange1.1t04741.1", "target": "Cs2g04850.2", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g02490.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g10670.2", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "orange1.1t00168.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs6g16010.5", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs4g07670.1", "score2": 3.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g03530.2", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g25060.2", "score2": 3.33960784313725, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs2g09970.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g16020.8", "score2": 1.27619047619048, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g21530.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs8g10160.2", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g05750.3", "score2": 3.77777777777778, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "orange1.1t02288.1", "score2": 3.33960784313725, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g02490.2", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g23640.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs6g04450.1", "score2": 17.4071291795551, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs4g12620.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g07870.2", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g12970.3", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g35310.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs4g02930.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs8g02310.1", "score2": 2.14285714285714, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g24690.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g14390.3", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g16020.4", "score2": 1.27619047619048, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs7g12530.1", "score2": 7.66666666666667, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g21290.3", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs7g13950.2", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g09920.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs8g03680.2", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "orange1.1t00459.3", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs7g06850.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs6g05770.1", "score2": 2.73015873015873, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g17300.1", "score2": 3.33960784313725, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g27040.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g11400.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g16020.1", "score2": 1.27619047619048, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs2g28930.3", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "orange1.1t00459.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g05650.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs7g08790.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs7g12520.1", "score2": 7.66666666666667, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs7g17060.4", "score2": 3.77777777777778, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g26080.1", "score2": 3.03225806451613, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g02590.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g12970.2", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g26110.2", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs7g17060.2", "score2": 3.77777777777778, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs4g12840.1", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g11680.6", "score2": 0.711827956989247, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g14390.6", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g05650.3", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g27000.2", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs6g08840.2", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "orange1.1t02345.2", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs8g19650.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g17360.1", "score2": 1.06349206349206, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g11680.2", "score2": 0.711827956989247, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g10270.1", "score2": 3.47619047619047, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs6g19730.2", "score2": 2.14285714285714, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g25690.1", "score2": 3.33960784313725, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "orange1.1t02721.2", "score2": 5.53046594982079, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs6g21100.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs6g02840.2", "score2": 5.55504352278544, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g03530.1", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g14390.8", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs4g03760.1", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g05750.1", "score2": 3.77777777777778, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g05650.5", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs2g08430.1", "score2": 1.23809523809524, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs6g02840.1", "score2": 5.55504352278544, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs4g15310.1", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g15060.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g21050.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "orange1.1t04186.1", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs3g16020.5", "score2": 1.27619047619048, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs1g09920.3", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs7g19120.1", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs2g21530.2", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "orange1.1t00051.1", "score2": 3.77777777777778, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g01570.1", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs8g08200.2", "score2": 2.11111111111111, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g20610.1", "score2": 3.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g13100.1", "score2": 3.77777777777778, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs9g03120.2", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs5g05650.7", "score2": 2.0, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs2g27930.2", "score2": 2.33333333333333, "score1": 0.0}, {"source": "orange1.1t04741.1", "target": "Cs8g02310.3", "score2": 2.14285714285714, "score1": 0.0}]}*/
              
 
-var w = 800,h = 600;
+var w = 770,h = 600;
 
 var circleWidth = 5;
 
@@ -57,7 +57,27 @@ function mapNodes(nodes){
     }
   });
     return nodesMap;
-} 
+}
+
+function updateProteinInfo(c_node){
+                                $('tbody').find('td').each(function(i){
+                                    if (i==0){
+                                        $(this).empty()
+                                        name_s = "<a href ='#'>" + c_node.name + "</a>"
+                                        $(this).append(name_s)
+                                    }else if(i==1){
+                                        $(this).empty()
+                                        var mapman_s = c_node.summ.mapman+ "<br/>[" + c_node.summ.bin+"]";
+                                        $(this).append(mapman_s)
+                                    }else if(i==2){
+                                        $(this).empty()
+                                        var expression_s = "Callus:"+d3.round(c_node.exp.callus,1)+"<br/>Flower:"+d3.round(c_node.exp.flower,1)+"<br/>Leaf:"+d3.round(c_node.exp.leaf,1)+"<br/>Fruit:"+d3.round(c_node.exp.fruit,1)+"<br/>Mixture1:"+d3.round(c_node.exp.mixture1,1)+'<br/>Mixture2:'+d3.round(c_node.exp.mixture2,1)+'<br/>Mixture3:'+d3.round(c_node.exp.mixture3,1);
+                                        $(this).append(expression_s);
+                                    }else if(i==3){
+                                        $(this).empty().text(c_node.summ.annotation);
+                                    }   
+                                });  
+}
 
 var scale_x = d3.scale.linear().domain([0,w]).range([0,300]);
 var scale_y = d3.scale.linear().domain([0,h]).range([h,0]);
@@ -69,7 +89,7 @@ function render(ppi_json){
               ppi_json.links.forEach(function(l){
                   l.source = nodesMap.get(l.source)
                   l.target = nodesMap.get(l.target)    
-              });
+              });              
 
               var temp_node = ppi_json.nodes[0].name
               var nodes = ppi_json.nodes.filter(function(n){  
@@ -79,7 +99,7 @@ function render(ppi_json){
               var links = ppi_json.links;
 
 
-              var vis = d3.select("body")
+              var vis = d3.select(".svg_container")
                     .append("svg:svg")
                     .attr("class", "stage")
                     .attr("width", w)
@@ -88,11 +108,6 @@ function render(ppi_json){
                     .append('svg:g')
                       .call(d3.behavior.zoom().on("zoom", zoom))
                     .append('svg:g');              
-
-              vis.append("svg:rect")
-                  .attr("class", "overlay")
-                  .attr("width", w)
-                  .attr("height", h);
 
               function zoom() {
                   console.log("here", d3.event.translate, d3.event.scale);
@@ -166,7 +181,6 @@ function render(ppi_json){
                           .style("left",(d3.event.pageX + 5) + "px")
                           .style("top",(d3.event.pageY + 5) + "px")                         
                           .select("#value").text(d.name);
-
                         d3.select("#tooltip")
                           .select("#callus").text(d.exp.callus);
                         d3.select("#tooltip")
@@ -218,8 +232,8 @@ function render(ppi_json){
                     })                    
                     //CLICK 
                     .on("click",function(d,i){
-                        console.log('click')
-                       
+                        console.log('click',d)
+                        updateProteinInfo(d);
                     })                                    
                     .on('dblclick',function(d,i){
                         d3.select("#tooltip").classed("hidden", true);
