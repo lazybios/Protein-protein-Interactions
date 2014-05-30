@@ -64,6 +64,13 @@ class GeneInfo(tornado.web.RequestHandler):
                             second += r[k]
                         else:
                             second += etree.tostring(r[k],pretty_print=True)
+                    if 2==j:
+                        t = etree.HTML(second)
+                        r = t.xpath("//div[@class='trans']/a/text()")
+                        second = []
+                        for protein in r:
+                            second.append("<a href='/gene?gene="+protein+"'>"+protein+"</a><br/>")
+                        second = ''.join(second)
                     homolog_info.append(second)
                 gene_info['homolog'] = homolog_info
             if 3==i:
@@ -71,10 +78,9 @@ class GeneInfo(tornado.web.RequestHandler):
                 ontology_xpath = "//div[@class='gene'][3]/table[@class='iprlist']//table[@class='linetable']"
                 r = tree.xpath(ontology_xpath)
                 for j in range(len(r)):
-                    if isinstance(r[k],etree._Element):
+                    if isinstance(r[j],etree._Element):
                         ontology_info.append(etree.tostring(r[j]))
                 gene_info['ontology'] = ontology_info
-                print gene_info
             '''if 4 == i:
                 domain_info  = []
                 domain_xpath = "//div[@id='content']/div[@class='gene'][4]/table[@class='iprlist']//table[@class='linetable']"
