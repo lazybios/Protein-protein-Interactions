@@ -4,9 +4,9 @@
         <meta charset ="utf-8">
         <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>PPI</title>
-        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
+        <title>Gene-PPI</title>
+        <link href="{{ static_url('css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ static_url('css/jumbotron-narrow.css') }}" rel="stylesheet">
     </head>
     <style>
             
@@ -14,34 +14,31 @@
     <body>
         <div class="container">
             <div class="header">
-                <div class="navbar-form navbar-right">
-                    <input type="text" name="protein" id="protein" class="form-control" value="Cs6g02840.1"/>
-                    <input class="btn btn-default" type="submit" id ="submit" value="Search"/>
-                </div>
-                <ul class="nav nav-pills pull-right">
+                   <ul class="nav nav-pills pull-right">
                    <li class="active"><a href="#">Home</a></li> 
-                   <li><a href="#">About</a></li>
                    <li><a href="#">Gene</a></li>
+                   <li><a href="#">About</a></li>
                 </ul>
                 <h3 class="text-muted">Citrus PPI</h3>
             </div><!--header end-->
             <div>
                 <!--Name-->
+               {% autoescape None %} 
                <div class="panel panel-primary">
                  <div class="panel-heading">Name</div>
                    <table class="table">
                        <tbody>
                         <tr>
                             <td>ID</td>
-                            <td>Cs2g14290.1</td>                            
+                            <td>{{ gene['name'][0] }}</td>                            
                         </tr>
                         <tr>
                             <td>Description</td>
-                            <td>Serine palmitoyltransferase 2; Putative 8-amino-7-oxononanoate synthase/2-amino-3-ketobutyrate coenzyme A ligase; Putative pyridoxal phosphate-dependent acyltransferase; 8-amino-7-oxononanoate synthase; Putative 8-amino-7-oxononanoate synthase; 8-amino-7-oxononanoate synthase/2-amino-3-ketobutyrate coenzyme A ligase;Chromosome 14 SCAF14590, whole genome shotgun sequence. (Fragment)</td>                            
+                            <td>{{ gene['name'][1] }}</td>                            
                         </tr>
                         <tr>
                             <td>SwissProt</td>
-                            <td>Long chain base biosynthesis protein 2a</td>                            
+                            <td>{{ gene['name'][2] }}</td>                            
                         </tr>
                        </tbody>
                    </table>
@@ -55,22 +52,20 @@
                         <tr>
                             <td>Orthologs</td>
                             <td>
-                                <a href="http://www.arabidopsis.org/servlets/TairObject?type=gene&amp;id=41336">AT3G48780.1</a> [Arabidopsis_thaliana]<br><a href="http://www.arabidopsis.org/servlets/TairObject?type=gene&amp;id=135666">AT5G23670.1</a> [Arabidopsis_thaliana]<br><a href="http://rice.plantbiology.msu.edu/cgi-bin/ORF_infopage.cgi?orf=LOC_Os01g70360.1">LOC_Os01g70360.1</a> [Oryza_sativa]<br><a href="http://rice.plantbiology.msu.edu/cgi-bin/ORF_infopage.cgi?orf=LOC_Os01g70370.1">LOC_Os01g70370.1</a> [Oryza_sativa]<br><a href="http://rice.plantbiology.msu.edu/cgi-bin/ORF_infopage.cgi?orf=LOC_Os01g70380.1">LOC_Os01g70380.1</a> [Oryza_sativa]<br><a href="http://rice.plantbiology.msu.edu/cgi-bin/ORF_infopage.cgi?orf=LOC_Os11g31640.1">LOC_Os11g31640.1</a> [Oryza_sativa]<br>
+                                {{ gene['homolog'][0] }}
                             </td>                            
                         </tr>
                         <tr>
                             <td>Inparalogs</td>
                             <td>
-                                <a href="Cs2g14300.1">Cs2g14300.1</a><br><a href="Cs2g14300.2">Cs2g14300.2</a> 
+                                {{ gene['homolog'][1] }}
                             </td>                            
                         </tr>
                         <tr>
                             <td>Kegg orthologs</td>
-                            <td><a href="http://www.kegg.jp/dbget-bin/www_bget?ko:K00652">K00652</a></td>                            
-                        </tr>
-                        <tr>
-                            <td>ID</td>
-                            <td>Cs2g14290.1</td>                            
+                            <td>
+                                {{ gene['homolog'][2] }}
+                            </td>                            
                         </tr>
                        </tbody>
                    </table>
@@ -84,25 +79,20 @@
                         <tr>
                             <td>Gene Ontology</td>
                             <td>
-                                <table class="linetable" border="0" cellpadding="0" cellspacing="0"><tbody><tr><th><a target="_blank" href="http://www.ebi.ac.uk/QuickGO/GTerm?id=GO:0003824">GO:0003824</a></th><td width="50">[<span style="color:#FF1F00;">molecular_function</span>]</td><td>catalytic activity</td></tr> <tr><th><a target="_blank" href="http://www.ebi.ac.uk/QuickGO/GTerm?id=GO:0008152">GO:0008152</a></th><td width="50">[<span style="color:#FF1F00;">biological_process</span>]</td><td>metabolic process</td></tr> <tr><th><a target="_blank" href="http://www.ebi.ac.uk/QuickGO/GTerm?id=GO:0009058">GO:0009058</a></th><td width="50">[<span style="color:#FF1F00;">biological_process</span>]</td><td>biosynthetic process</td></tr> <tr><th><a target="_blank" href="http://www.ebi.ac.uk/QuickGO/GTerm?id=GO:0016740">GO:0016740</a></th><td width="50">[<span style="color:#FF1F00;">molecular_function</span>]</td><td>transferase activity</td></tr> <tr><th><a target="_blank" href="http://www.ebi.ac.uk/QuickGO/GTerm?id=GO:0030170">GO:0030170</a></th><td width="50">[<span style="color:#FF1F00;">molecular_function</span>]</td><td>pyridoxal phosphate binding</td></tr></tbody></table> 
+                                {{ gene['ontology'][0]  }}
                             </td>                            
                         </tr>
                         <tr>
                             <td>InterPro Entry</td>
                             <td>
-                                
-                                    <table class="linetable" border="0" cellpadding="0" cellspacing="0"><tbody><tr><th><a target="_blank" href="http://www.ebi.ac.uk/interpro/entry/IPR001917">IPR001917</a></th><td>Aminotransferase, class-II, pyridoxal-phosphate binding site</td></tr> <tr><th><a target="_blank" href="http://www.ebi.ac.uk/interpro/entry/IPR004839">IPR004839</a></th><td>Aminotransferase, class I/classII</td></tr> <tr><th><a target="_blank" href="http://www.ebi.ac.uk/interpro/entry/IPR015421">IPR015421</a></th><td>Pyridoxal phosphate-dependent transferase, major region, subdomain 1</td></tr> <tr><th><a target="_blank" href="http://www.ebi.ac.uk/interpro/entry/IPR015422">IPR015422</a></th><td>Pyridoxal phosphate-dependent transferase, major region, subdomain 2</td></tr> <tr><th><a target="_blank" href="http://www.ebi.ac.uk/interpro/entry/IPR015424">IPR015424</a></th><td>Pyridoxal phosphate-dependent transferase, major domain</td></tr></tbody></table>    
-
+                                {{ gene['ontology'][1] }}    
                             </td>                            
-                        </tr>
-                        <tr>
-                            <td>SwissProt</td>
-                            <td>Long chain base biosynthesis protein 2a</td>                            
                         </tr>
                        </tbody>
                    </table>
                  </div>
 
+                <!--
                <div class="panel panel-primary">
                  <div class="panel-heading">Domain analysis</div>
                    <p><span class="label label-success">Table</span></p>
@@ -112,14 +102,12 @@
                             <td>Gene3D</td>
                             <td>
                               <table class="linetable" border="0"><tbody><tr style="background-color:#FFF;"><th id="count1"><a target="_blank" href="http://www.cathdb.info/version/latest/superfamily/3.40.640.10">3.40.640.10</a></th><td>Type I PLP-dependent aspartate aminotransferase-like (Major domain)</td></tr> <tr><th id="count2"><a target="_blank" href="http://www.cathdb.info/version/latest/superfamily/3.90.1150.10">3.90.1150.10</a></th><td>Aspartate Aminotransferase, domain 1</td></tr></tbody></table>  
-
                             </td>                            
                         </tr>
                         <tr>
                             <td>HMMPanther</td>
                             <td>
                                     <table class="linetable" border="0"><tbody><tr style="background-color:#FFF;"><th id="count4">PTHR13693</th><td>CLASS II AMINOTRANSFERASE/8-AMINO-7-OXONONANOATE SYNTHASE</td></tr> <tr style="background-color:#FFF;"><th id="count5">PTHR13693:SF3</th><td>SERINE PALMITOYLTRANSFERASE 2</td></tr></tbody></table>    
-
                             </td>                            
                         </tr>
                         <tr>
@@ -130,7 +118,6 @@
                             <td>PatternScan</td>
                             <td>
                                 <table class="linetable" border="0"><tbody><tr><th id="count9">PS00599</th><td>AA_TRANSFER_CLASS_2</td></tr></tbody></table>
-
                             </td>                            
                         </tr>
                         <tr>
@@ -146,7 +133,7 @@
                    <img src="http://citrus.hzau.edu.cn/orange/tmp/iprscan.62579.png"/>
                     
                    </div>
-                 </div>
+                 </div> -->
 
 
             </div>
@@ -154,7 +141,7 @@
                 <p>&copy; Company 2014</p>
             <div><!--footer end-->
         </div> 
-        <script src="../static/js/jquery.min.js"></script>
-        <script src="../static/js/bootstrap.min.js"></script>
+        <script src="{{ static_url('js/jquery.min.js') }}"></script>
+        <script src="{{ static_url('js/bootstrap.min.js') }}"></script>
     </body>
 </html>

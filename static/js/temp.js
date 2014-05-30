@@ -63,7 +63,7 @@ function updateProteinInfo(c_node){
                                 $('tbody').find('td').each(function(i){
                                     if (i==0){
                                         $(this).empty()
-                                        name_s = "<a href ='#'>" + c_node.name + "</a>"
+                                        name_s = "<a href ='/gene?gene="+c_node.name+"'>" + c_node.name + "</a>"
                                         $(this).append(name_s)
                                     }else if(i==1){
                                         $(this).empty()
