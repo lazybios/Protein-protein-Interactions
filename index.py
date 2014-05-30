@@ -1,11 +1,13 @@
 import os.path
 import sqlite3
 import json
+from lxml import etree
 
 import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
+import tornado.httpclient
 
 def _execute(query):
     dbPath='misc/utils/ppi.db'
@@ -28,6 +30,59 @@ class IndexHandler(tornado.web.RequestHandler):
         self.render('index.html')
     def write_error(self,status_code,**kwargs):
         self.write("Gosh darnit,usre! You caused a %d error." % status_code)
+
+
+class GeneInfo(tornado.web.RequestHandler):
+    @tornado.web.asynchronous
+    def get(self):    
+        gene = self.get_argument('gene',None)
+        if not gene:
+            self.write('the argument is null!!!:(')
+            return
+        client = tornado.httpclient.AsyncHTTPClient()
+        client.fetch("http://citrus.hzau.edu.cn/cgi-bin/orange/gene/"+gene,callback=self.on_response)
+
+    def on_response(self,response):
+        gene_info = {}
+        tree = etree.HTML(response.body)
+        for i in range(1,5):
+            if 1==i:
+                name_info = [] 
+                for j in range(1,4):
+                    name_xpath = "//div[@class='gene'][1]/table/tbody/tr["+ str(j) +"]/td[@class='second']" 
+                    r = tree.xpath(name_xpath)
+                    name_info.append(r[0].text) 
+                gene_info['name'] = name_info
+            if 2 == i:
+                homolog_info = []
+                for j in range(1,4):
+                    nomolog_xpath = "//div[@class='gene'][2]/table/tbody/tr["+ str(j) +"]/td[@class='second']/node()" 
+                    r = tree.xpath(nomolog_xpath)
+                    second = ''
+                    for k  in range(len(r)):
+                        if not isinstance(r[k],etree._Element):
+                            second += r[k]
+                        else:
+                            second += etree.tostring(r[k],pretty_print=True)
+                    homolog_info.append(second)
+                gene_info['homolog'] = homolog_info
+            if 3==i:
+                ontology_info = []
+                ontology_xpath = "//div[@class='gene'][3]/table[@class='iprlist']//table[@class='linetable']"
+                r = tree.xpath(ontology_xpath)
+                for j in range(len(r)):
+                    if isinstance(r[k],etree._Element):
+                        ontology_info.append(etree.tostring(r[j]))
+                gene_info['ontology'] = ontology_info
+                print gene_info
+            '''if 4 == i:
+                domain_info  = []
+                domain_xpath = "//div[@id='content']/div[@class='gene'][4]/table[@class='iprlist']//table[@class='linetable']"
+                r = tree.xpath(domain_xpath)
+                for j in range(len(r)):
+                    pass'''
+        self.render('gene.html',gene=gene_info)
+#        self.finish()
 
 class GenerateJsonHandler(tornado.web.RequestHandler):
     def get(self):    
@@ -117,7 +172,8 @@ if __name__ == "__main__":
     app = tornado.web.Application(
         handlers=[
             (r'/',IndexHandler),
-            (r'/json',GenerateJsonHandler)
+            (r'/json',GenerateJsonHandler),
+            (r'/gene',GeneInfo)
         ],
         template_path=os.path.join(os.path.dirname(__file__),'templates'),
         static_path = os.path.join(os.path.dirname(__file__),'static'),
