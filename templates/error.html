@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset ="utf-8">
+        <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ static_url('img/favicon.ico') }}" type="image/x-icon">
+        <title>Protein-protein interactions Visualable Project</title>
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../static/css/jumbotron-narrow.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="navbar-form navbar-right">
+                    <input type="text" name="protein" id="protein" class="form-control" value="Cs6g02840.1"/>
+                    <input class="btn btn-default" type="submit" id ="submit" value="Search"/>
+                </div>
+                <ul class="nav nav-pills pull-right">
+                   <li class="active"><a href="#">Home</a></li> 
+                   <li><a href="#">About</a></li>
+                   <li><a href="#">Gene</a></li>
+                </ul>
+                <h3 class="text-muted">Citrus PPI</h3>
+            </div><!--header end-->
+            <div class="lc_error">
+                
+            </div>
+            <div class="footer">
+                <p>&copy; Company 2014</p>
+            <div><!--footer end-->
+        </div> 
+        <script src="../static/js/jquery.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+    </body>
+</html>
