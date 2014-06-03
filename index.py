@@ -31,16 +31,26 @@ class IndexHandler(tornado.web.RequestHandler):
     def write_error(self,status_code,**kwargs):
         self.write("Gosh darnit,usre! You caused a %d error." % status_code)
 
+class AboutHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render('about.html')
 
-class GeneInfo(tornado.web.RequestHandler):
+class GeneInfoHandler(tornado.web.RequestHandler):
     @tornado.web.asynchronous
     def get(self):    
-        gene = self.get_argument('gene',None)
+        gene = self.get_argument('gene',None)        
         if not gene:
-            self.write('the argument is null!!!:(')
-            return
-        client = tornado.httpclient.AsyncHTTPClient()
-        client.fetch("http://citrus.hzau.edu.cn/cgi-bin/orange/gene/"+gene,callback=self.on_response)
+            self.render("search.html")
+        else:            
+            client = tornado.httpclient.AsyncHTTPClient()
+            client.fetch("http://citrus.hzau.edu.cn/cgi-bin/orange/gene/"+gene,callback=self.on_response)
+
+#    def post(self):
+#        gene = self.get_argument('gene',None)
+#        print gene
+#        client = tornado.httpclient.AsyncHTTPClient()
+#        client.fetch("http://citrus.hzau.edu.cn/cgi-bin/orange/gene/"+gene,callback=self.on_response)
+
 
     def on_response(self,response):
         gene_info = {}
@@ -179,7 +189,8 @@ if __name__ == "__main__":
         handlers=[
             (r'/',IndexHandler),
             (r'/json',GenerateJsonHandler),
-            (r'/gene',GeneInfo)
+            (r'/gene',GeneInfoHandler),
+            (r'/about',AboutHandler)
         ],
         template_path=os.path.join(os.path.dirname(__file__),'templates'),
         static_path = os.path.join(os.path.dirname(__file__),'static'),
